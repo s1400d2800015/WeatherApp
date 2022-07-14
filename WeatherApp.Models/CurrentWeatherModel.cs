@@ -7,6 +7,11 @@ namespace WeatherApp.Models
 
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 
+    public class WeatherAppDataModel
+    {
+        public CurrentWeatherModel result { get; set; }
+    }
+
     public class CurrentWeatherModel
     {
         public Coord coord { get; set; }
@@ -43,7 +48,14 @@ namespace WeatherApp.Models
         public double temp_max { get; set; }
         public int? pressure { get; set; }
         public int? humidity { get; set; }
+
+        public double celsius_temp { get { return Math.Round(temp - 273.15,2); } }
+        public double celsius_feels_like { get { return Math.Round(feels_like - 273.15, 2); } }
+        public double celsius_temp_min { get { return Math.Round(temp_min - 273.15, 2); } }
+        public double celsius_temp_max { get { return Math.Round(temp_max - 273.15, 2); } }
     }
+
+
 
 
     public class Sys
