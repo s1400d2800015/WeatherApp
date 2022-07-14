@@ -6,5 +6,6 @@ namespace WeatherApp.Application.Interfaces
 {
     public interface IUnitOfWork
     {
+        ICurrentWeatherService currentWeatherService { get; }
     }
 }
