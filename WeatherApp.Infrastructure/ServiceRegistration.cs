@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using WeatherApp.Application.Interfaces;
+using WeatherApp.Infrastructure.Services;
 
 namespace WeatherApp.Infrastructure
 {
@@ -14,7 +15,7 @@ namespace WeatherApp.Infrastructure
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-
+            services.AddTransient<ICurrentWeatherService, CurrentWeatherService>();
 
         }
 

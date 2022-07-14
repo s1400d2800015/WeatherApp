@@ -31,22 +31,8 @@ namespace WeatherApp.WebApi
         {
             services.AddInfrastructure(Configuration);
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddDefaultPolicy(
-            //        builder =>
-            //        {
-            //            builder.AllowAnyOrigin();
-            //            builder.AllowAnyHeader();
-            //            builder.AllowAnyMethod();
-            //            builder.SetIsOriginAllowed(orgin => true);
-            //        });
-            //});
-
-            //services.AddSession();
-            //services.AddDistributedMemoryCache();
-
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddSwaggerGen(c =>
             {
@@ -73,12 +59,9 @@ namespace WeatherApp.WebApi
 
             app.UseRouting();
 
-            app.UseAuthorization();
             #region Swagger
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
+
             app.UseSwagger();
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
             
             app.UseSwaggerUI(c =>
             {
