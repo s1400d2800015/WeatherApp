@@ -33,6 +33,9 @@ export class NavMenu extends Component {
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/">Heidenheim Weather Data</NavLink>
                 </NavItem>
+                 <NavItem>
+                    <NavLink tag={Link} className="text-dark" to="/city-Weather">Weather By City</NavLink>
+                 </NavItem>
               </ul>
             </Collapse>
           </Container>
